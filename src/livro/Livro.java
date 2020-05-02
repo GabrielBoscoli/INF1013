@@ -19,6 +19,18 @@ public abstract class Livro {
 		System.out.println("Genero: " + this.genero);
 		System.out.println("Editora: " + this.editora);
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(!o.getClass().equals(Livro.class)) {
+			return false;
+		}
+		Livro livro = (Livro) o;
+		if(nome.equals(livro.getNome()) && autor.equals(livro.getAutor()) && editora.equals(livro.getEditora())) {
+			return true;
+		}
+		return false;
+	}
 
 	public String getNome() {
 		return nome;

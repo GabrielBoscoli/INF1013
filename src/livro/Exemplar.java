@@ -16,6 +16,18 @@ public class Exemplar {
 		aluguel = null;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if(!o.getClass().equals(Exemplar.class)) {
+			return false;
+		}
+		Exemplar exemplar = (Exemplar) o;
+		if(livro.equals(exemplar.getLivro()) && id == exemplar.getId()) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void exemplarAlugado(Aluguel aluguel) {
 		this.aluguel = aluguel;
 	}
