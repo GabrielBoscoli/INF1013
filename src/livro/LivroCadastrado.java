@@ -64,8 +64,16 @@ public class LivroCadastrado extends Livro {
 		return null;
 	}
 	
+	public Set<Exemplar> getExemplares() {
+		return exemplares;
+	}
+	
 	public void reservar(Reserva reserva) {
 		this.reservas.add(reserva);
+	}
+	
+	public Set<Reserva> getReservas() {
+		return reservas;
 	}
 	
 	public void exibirDetalhes() {
