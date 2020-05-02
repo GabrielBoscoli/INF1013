@@ -8,6 +8,7 @@ public class Exemplar {
 	@Hidden
 	private LivroCadastrado livro;
 	private int id;
+	@Hidden
 	private Aluguel aluguel;
 	
 	public Exemplar(int id, LivroCadastrado livro) {

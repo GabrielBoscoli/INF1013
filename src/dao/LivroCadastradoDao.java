@@ -27,9 +27,7 @@ import com.google.gson.reflect.TypeToken;
 
 import livro.Exemplar;
 import livro.LivroCadastrado;
-import relações.Aluguel;
 import relações.Cliente;
-import relações.Reserva;
 
 //UMA IDEIA A SE PENSAR: TIRAR A RESERVA E O ALUGUEL DA SERIALIZAÇÃO E PEGAR ELES NA FACHADA.
 public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 0;
@@ -41,8 +39,7 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 	    }
 	 
 	    public boolean shouldSkipField(FieldAttributes f) {
-	        return f.getAnnotation(Hidden.class) != null && (f.getDeclaredClass().equals(LivroCadastrado.class) ||
-	        		f.getDeclaredClass().equals(Exemplar.class));
+	        return f.getAnnotation(Hidden.class) != null;
 	    }
 	}
 	
@@ -60,16 +57,13 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 		public LivroCadastrado deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context)
 				throws JsonParseException {
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
-			JsonArray jsonArrayReservas = jsonObject.get("reservas").getAsJsonArray();
-			Set<Reserva> reservas = new HashSet<Reserva>();
-			jsonArrayReservas.forEach(jsonReserva -> {
-				reservas.add(context.deserialize(jsonReserva, Reserva.class));
-			});
+			
 			JsonArray jsonArrayExemplares = jsonObject.get("exemplares").getAsJsonArray();
 			Set<Exemplar> exemplares = new HashSet<Exemplar>();
 			jsonArrayExemplares.forEach(jsonExemplares -> {
 				exemplares.add(context.deserialize(jsonExemplares, Exemplar.class));
 			});
+			
 			LivroCadastrado livro = new LivroCadastrado(jsonObject.get("nome").getAsString(),
 					jsonObject.get("autor").getAsString(),
 					jsonObject.get("genero").getAsString(),
@@ -78,11 +72,9 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 					jsonObject.get("quantidadeAlugado").getAsInt(),
 					jsonObject.get("quantidadeReserva").getAsInt(),
 					jsonObject.get("quantidadeDisponivel").getAsInt(),
-					reservas,
+					null,
 					exemplares);
-			reservas.forEach(reserva -> {
-				reserva.setLivroReservado(livro);
-			});
+			
 			exemplares.forEach(exemplar -> {
 				exemplar.setLivro(livro);
 				exemplar.getAluguel().setLivroAlugado(exemplar);
