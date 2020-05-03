@@ -40,9 +40,25 @@ public class Main {
 		ArrayList<LivroCadastrado> arrayLivros = fachadaDao.getAllLivros();
 		
 		if(arrayClientes.size() > 0 && arrayLivros.size() > 0) {
+			
+			System.out.println("Verifica se as referencia estao certas");
+			Cliente magui = fachadaDao.getCliente(11111111111l).get();
+			LivroCadastrado livroHP2 = fachadaDao.getLivro("Harry Potter 2").get();
+			magui.getAluguel().forEach(aluguel -> {
+				if(aluguel.aluguelAtivo()) {
+					if(aluguel == livroHP2.getExemplar(97).getAluguel()) {
+						System.out.println("Referencias estão corretas");
+					} else {
+						System.out.println("Referencia está incorreta " + aluguel.getLivroAlugado().getId());
+					}
+				}
+			});
+			
+			fachadaDao.update();
+			System.out.println("\nPressione enter para continuar.");
+			leitor.nextLine();
 
 			System.out.println("cancela todos os alugueis do magui");
-			Cliente magui = fachadaDao.getCliente(11111111111l).get();
 			magui.getAluguel().forEach(aluguel -> {
 				if(aluguel.cancelarAluguel()) {
 					System.out.println(aluguel.getLivroAlugado().getLivro() + "cancelou");
@@ -62,6 +78,7 @@ public class Main {
 			fachadaDao.update();
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
+			
 		} else {
 			//criando primeiro cliente
 			Cliente magui = new Cliente(11111111111l, "Magui", "Gavea, Marques, 98, 301", "magui@email.com", 999999999);
