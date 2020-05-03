@@ -30,7 +30,10 @@ import livro.LivroCadastrado;
 import relações.Cliente;
 import relações.Reserva;
 
-//UMA IDEIA A SE PENSAR: TIRAR A RESERVA E O ALUGUEL DA SERIALIZAÇÃO E PEGAR ELES NA FACHADA.
+/*
+ * Ao deserializar o json, as instancias de LivroCadastrado criadas possuem Set de reservas vazio
+ * e todos os exemplares não estão alugados, ou seja, exemplar.aluguel == null.
+ */
 public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 0;
 	
 	private class HiddenAnnotationExclusionStrategy implements ExclusionStrategy 

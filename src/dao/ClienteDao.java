@@ -33,6 +33,10 @@ import relações.Aluguel;
 import relações.Cliente;
 import relações.Reserva;
 
+/*
+ * Ao deserializar o json, as instancia de cliente possuem todos os atributos.
+ * No entanto, qualquer instancia de livro obtida através da navegação do cliente estará incompleta.
+ */
 public class ClienteDao implements Dao<Cliente>{
 	
 	private class HiddenAnnotationExclusionStrategy implements ExclusionStrategy 
