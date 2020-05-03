@@ -122,9 +122,15 @@ public class ClienteDao implements Dao<Cliente>{
 	}
 
 	@Override
-	public Optional<Cliente> get(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Cliente> get(String[] params) {
+		Long cpf = Long.valueOf(params[0]);
+		for(int i = 0; i < clientes.size(); i++) {
+			Cliente cliente = clientes.get(i);
+			if(cliente.getCpf() == cpf) {
+				return Optional.of(cliente);
+			}
+		}
+		return Optional.empty();
 	}
 
 	@Override

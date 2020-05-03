@@ -32,7 +32,7 @@ public class FuncionarioDao implements Dao<Funcionário> {
 	}
 
 	@Override
-	public Optional<Funcionário> get(long id) {
+	public Optional<Funcionário> get(String params[]) {
 		// TODO Auto-generated method stub
 		return null;
 	}

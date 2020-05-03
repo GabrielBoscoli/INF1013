@@ -3,6 +3,7 @@ package dao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import livro.Exemplar;
@@ -11,6 +12,7 @@ import relações.Aluguel;
 import relações.Cliente;
 import relações.Reserva;
 
+//TRANSFORMAR ESSA CLASSE EM SINGLETON
 public class FachadaDao {
 	private ClienteDao clienteDao;
 	private LivroCadastradoDao livroDao;
@@ -73,6 +75,18 @@ public class FachadaDao {
 	
 	public ArrayList<LivroCadastrado> getAllLivros() {
 		return livros;
+	}
+	
+	public Optional<Cliente> getCliente(long cpf) {
+		String[] params = new String[1];
+		params[0] = String.valueOf(cpf);
+		return clienteDao.get(params);
+	}
+	
+	public Optional<LivroCadastrado> getLivro(String nome) {
+		String[] params = new String[1];
+		params[0] = nome;
+		return livroDao.get(params);
 	}
 	
 	public void saveCliente(Cliente t) {

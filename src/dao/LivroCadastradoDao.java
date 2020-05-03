@@ -99,9 +99,14 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 	}
 
 	@Override
-	public Optional<LivroCadastrado> get(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<LivroCadastrado> get(String[] params) {
+		for(int i = 0; i < livros.size(); i++) {
+			LivroCadastrado livro = livros.get(i);
+			if(livro.getNome().equals(params[0])) {
+				return Optional.of(livro);
+			}
+		}
+		return Optional.empty();
 	}
 
 	@Override

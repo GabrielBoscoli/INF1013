@@ -43,12 +43,26 @@ public class Main {
 		ArrayList<LivroCadastrado> arrayLivros = fachadaDao.getAllLivros();
 		
 		if(arrayClientes.size() > 0 && arrayLivros.size() > 0) {
-			//index 1 do cliente eh o magui, 2 eh singelo e 3 eh gargamel
+
 			System.out.println("cancela todos os alugueis do magui");
-			arrayClientes.get(1).getAluguel().forEach(aluguel -> {
-				aluguel.cancelarAluguel();
+			Cliente magui = fachadaDao.getCliente(11111111111l).get();
+			magui.getAluguel().forEach(aluguel -> {
+				if(aluguel.cancelarAluguel()) {
+					System.out.println(aluguel.getLivroAlugado().getLivro() + "cancelou");
+				} else {
+					System.out.println(aluguel.getLivroAlugado().getLivro() + "não cancelou");
+				}
 			});
 			
+			fachadaDao.update();
+			System.out.println("\nPressione enter para continuar.");
+			leitor.nextLine();
+			
+			System.out.println("magui aluga Harry Potter 1");
+			LivroCadastrado livro = fachadaDao.getLivro("Harry Potter 1").get();
+			magui.alugarLivro(livro.getExemplar(99));
+			
+			fachadaDao.update();
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
 		} else {
