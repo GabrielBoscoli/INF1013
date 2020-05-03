@@ -30,6 +30,10 @@ public abstract class Funcionário {
 		autenticado = false;
 	}
 	
+	public boolean estaLogado() {
+		return autenticado;
+	}
+	
 	public Set<LivroCadastrado> buscarLivro(Set<LivroCadastrado> livros, String nomeOuAutor) {
 		if(!autenticado) {
 			return null;
@@ -43,6 +47,18 @@ public abstract class Funcionário {
 			}
 		});
 		return livrosRetorno;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public String getSenha() {
+		return senha;
 	}
 	
 	//duvida

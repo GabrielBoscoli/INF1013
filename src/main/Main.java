@@ -406,8 +406,8 @@ public class Main {
 			//clienteDao.delete(singelo);
 			//clienteDao.delete(gargamel);
 			
-			funcionarioDao.delete(gerente);
-			funcionarioDao.delete(bibliotecario);
+			//funcionarioDao.delete(gerente);
+			//funcionarioDao.delete(bibliotecario);
 			
 			//livrocadastradoDao.delete(hp1);
 			//livrocadastradoDao.delete(hp2);

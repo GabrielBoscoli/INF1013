@@ -11,19 +11,66 @@ import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
+import funcionario.Bibliotecário;
 import funcionario.Funcionário;
+import funcionario.Gerente;
+import relações.Cliente;
 
 public class FuncionarioDao implements Dao<Funcionário> {
+	
+	private class FuncionarioSerializer implements JsonSerializer<Funcionário> {
+		@Override
+		public JsonElement serialize(Funcionário object, Type type, JsonSerializationContext context) {
+			System.out.println("entrou qui");
+			JsonObject jsonObject = new JsonObject();
+			if(object instanceof Gerente) {
+				jsonObject.addProperty("tipo", "gerente");
+			} else {
+				jsonObject.addProperty("tipo", "bibliotecario");
+			}
+			jsonObject.addProperty("nome", object.getNome());
+			jsonObject.addProperty("id", object.getId());
+			jsonObject.addProperty("senha", object.getSenha());
+			jsonObject.addProperty("autenticado", object.estaLogado());
+			return jsonObject;
+		}
+	}
+	
+	private class FuncionarioDeserializer implements JsonDeserializer<Funcionário> {
+		@Override
+		public Funcionário deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context)
+				throws JsonParseException {
+			Funcionário funcionario = null;
+			JsonObject jsonObject = jsonElement.getAsJsonObject();
+			String tipo = jsonObject.get("tipo").getAsString();
+			if(tipo.equals("gerente")) {
+				funcionario = new Gerente(jsonObject.get("nome").getAsString(),
+						jsonObject.get("id").getAsInt(),
+						jsonObject.get("senha").getAsString());
+			} else {
+				funcionario = new Bibliotecário(jsonObject.get("nome").getAsString(),
+						jsonObject.get("id").getAsInt(),
+						jsonObject.get("senha").getAsString());
+			}
+			return funcionario;
+		}
+	}
 	
 	private ArrayList<Funcionário> funcionarios;
 	
 	public FuncionarioDao() throws IOException {
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().registerTypeAdapter(Funcionário.class, new FuncionarioDeserializer()).create();
 		Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Gabriel Boscoli\\Documents\\INF1013\\funcionario-db.json"));
 		Type funcionarioListType = new TypeToken<ArrayList<Funcionário>>(){}.getType();
-		//da erro quando tem conteudo no arquivo.
 		funcionarios = gson.fromJson(reader, funcionarioListType);
 		if(funcionarios == null) {
 			funcionarios = new ArrayList<Funcionário>();
@@ -50,7 +97,10 @@ public class FuncionarioDao implements Dao<Funcionário> {
 
 	@Override
 	public void update() {
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+		gsonBuilder.registerTypeAdapter(Bibliotecário.class, new FuncionarioSerializer());
+		gsonBuilder.registerTypeAdapter(Gerente.class, new FuncionarioSerializer());
+		Gson gson = gsonBuilder.create();
 		try {
 			Writer writer = Files.newBufferedWriter(Paths.get("C:\\Users\\Gabriel Boscoli\\Documents\\INF1013\\funcionario-db.json"));
 			gson.toJson(funcionarios, writer);
