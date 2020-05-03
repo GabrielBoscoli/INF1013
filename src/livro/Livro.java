@@ -22,7 +22,7 @@ public abstract class Livro {
 	
 	@Override
 	public boolean equals(Object o) {
-		if(!o.getClass().equals(Livro.class)) {
+		if(!(o instanceof Livro)) {
 			return false;
 		}
 		Livro livro = (Livro) o;

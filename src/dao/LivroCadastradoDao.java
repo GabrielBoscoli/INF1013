@@ -28,6 +28,7 @@ import com.google.gson.reflect.TypeToken;
 import livro.Exemplar;
 import livro.LivroCadastrado;
 import relações.Cliente;
+import relações.Reserva;
 
 //UMA IDEIA A SE PENSAR: TIRAR A RESERVA E O ALUGUEL DA SERIALIZAÇÃO E PEGAR ELES NA FACHADA.
 public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 0;
@@ -72,12 +73,11 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 					jsonObject.get("quantidadeAlugado").getAsInt(),
 					jsonObject.get("quantidadeReserva").getAsInt(),
 					jsonObject.get("quantidadeDisponivel").getAsInt(),
-					null,
+					new HashSet<Reserva>(),
 					exemplares);
 			
 			exemplares.forEach(exemplar -> {
 				exemplar.setLivro(livro);
-				exemplar.getAluguel().setLivroAlugado(exemplar);
 			});
 			return livro;
 		}
@@ -88,7 +88,7 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 	public LivroCadastradoDao() throws IOException {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(LivroCadastrado.class, new LivroCadastradoDeserializer());
-		Gson gson = new Gson();
+		Gson gson = gsonBuilder.create();
 		Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Gabriel Boscoli\\Documents\\INF1013\\livro-cadastrado-db.json"));
 		Type livroListType = new TypeToken<ArrayList<LivroCadastrado>>(){}.getType();
 		livros = gson.fromJson(reader, livroListType);

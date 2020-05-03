@@ -19,7 +19,7 @@ public class Exemplar {
 	
 	@Override
 	public boolean equals(Object o) {
-		if(!o.getClass().equals(Exemplar.class)) {
+		if(!(o instanceof Exemplar)) {
 			return false;
 		}
 		Exemplar exemplar = (Exemplar) o;

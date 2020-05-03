@@ -57,7 +57,7 @@ public class FachadaDao {
 			clientes.get(j).getAluguel().forEach(aluguel -> {
 				Exemplar exemplar = aluguel.getLivroAlugado();
 				LivroCadastrado livro = anotherCopyLivros.remove(anotherCopyLivros.indexOf(exemplar.getLivro()));//precisa fazer equals no exemplar!!!
-				if(exemplar.getAluguel().aluguelAtivo()) {
+				if(aluguel.aluguelAtivo()) {
 					livro.getExemplar(exemplar.getId()).exemplarAlugado(exemplar.getAluguel());//examplar do livro agora possui aluguel
 				}
 				aluguel.setLivroAlugado(livro.getExemplar(exemplar.getId()));//exemplar do aluguel agora é o mesmo do livro.
