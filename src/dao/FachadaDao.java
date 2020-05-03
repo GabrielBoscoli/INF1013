@@ -31,7 +31,7 @@ public class FachadaDao {
 //	private ArrayList<Aluguel> alugueis;
 //	private ArrayList<Exemplar> exemplares;
 	
-	static FachadaDao getInstance() throws IOException {
+	public static FachadaDao getInstance() throws IOException {
 		if(instance == null)
 			instance = new FachadaDao();
 		return instance;
@@ -109,9 +109,8 @@ public class FachadaDao {
 		return livroDao.get(params);
 	}
 	
-	public void saveCliente(Cliente t) {
+	public void saveCliente(Cliente t) {System.out.println("oi");
 		if(!clientes.contains(t)) {
-			clientes.add(t);
 			clienteDao.save(t);
 		}
 //		t.getReservas().forEach(reserva -> {
@@ -129,7 +128,6 @@ public class FachadaDao {
 	
 	public void saveLivro(LivroCadastrado t) {
 		if(!livros.contains(t)) {
-			livros.add(t);
 			livroDao.save(t);			
 		}
 //		t.getReservas().forEach(reserva -> {
@@ -147,7 +145,6 @@ public class FachadaDao {
 	
 	public void saveFuncionario(Funcionário t) {
 		if(!funcionarios.contains(t)) {
-			funcionarios.add(t);
 			funcionarioDao.save(t);
 		}
 	}
@@ -159,7 +156,6 @@ public class FachadaDao {
 	
 	public void deleteCliente(Cliente t) {
 		if(clientes.contains(t)) {
-			clientes.remove(t);
 			clienteDao.delete(t);
 		}
 //		t.getReservas().forEach(reserva -> {
@@ -176,7 +172,6 @@ public class FachadaDao {
 	
 	public void deleteLivro(LivroCadastrado t) {
 		if(livros.contains(t)) {
-			livros.remove(t);
 			livroDao.delete(t);
 		}
 //		t.getReservas().forEach(reserva -> {
@@ -194,7 +189,6 @@ public class FachadaDao {
 	
 	public void deleteFuncionario(Funcionário t) {
 		if(funcionarios.contains(t)) {
-			funcionarios.remove(t);
 			funcionarioDao.delete(t);
 		}
 	}

@@ -30,7 +30,6 @@ public class FuncionarioDao implements Dao<Funcionário> {
 	private class FuncionarioSerializer implements JsonSerializer<Funcionário> {
 		@Override
 		public JsonElement serialize(Funcionário object, Type type, JsonSerializationContext context) {
-			System.out.println("entrou qui");
 			JsonObject jsonObject = new JsonObject();
 			if(object instanceof Gerente) {
 				jsonObject.addProperty("tipo", "gerente");
@@ -67,7 +66,7 @@ public class FuncionarioDao implements Dao<Funcionário> {
 	
 	private ArrayList<Funcionário> funcionarios;
 	
-	public FuncionarioDao() throws IOException {
+	FuncionarioDao() throws IOException {
 		Gson gson = new GsonBuilder().registerTypeAdapter(Funcionário.class, new FuncionarioDeserializer()).create();
 		Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Gabriel Boscoli\\Documents\\INF1013\\funcionario-db.json"));
 		Type funcionarioListType = new TypeToken<ArrayList<Funcionário>>(){}.getType();

@@ -108,7 +108,7 @@ public class ClienteDao implements Dao<Cliente>{
 	
 	private ArrayList<Cliente> clientes;
 	
-	public ClienteDao() throws IOException {
+	ClienteDao() throws IOException {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(Cliente.class, new ClienteDeserializer());
 		Gson gson = gsonBuilder.create();

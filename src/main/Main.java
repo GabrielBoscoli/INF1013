@@ -32,10 +32,7 @@ public class Main {
 		Scanner leitor = new Scanner(System.in);
 		
 		//inicializacao dos dao
-		FachadaDao fachadaDao = new FachadaDao();
-		ClienteDao clienteDao = new ClienteDao();
-		LivroCadastradoDao livrocadastradoDao = new LivroCadastradoDao();
-		FuncionarioDao funcionarioDao = new FuncionarioDao();
+		FachadaDao fachadaDao = FachadaDao.getInstance();
 		
 		Set<Cliente> clientes = new HashSet<Cliente>();
 		
@@ -69,17 +66,20 @@ public class Main {
 			//criando primeiro cliente
 			Cliente magui = new Cliente(11111111111l, "Magui", "Gavea, Marques, 98, 301", "magui@email.com", 999999999);
 			clientes.add(magui);
-			clienteDao.save(magui);
+			fachadaDao.saveCliente(magui);
 			
 			//criando segundo cliente
 			Cliente singelo = new Cliente(22222222222l, "Singelo", "Leblon, Arqueto, 51, 102", "singelo@email.com", 999999998);
 			clientes.add(singelo);
-			clienteDao.save(singelo);
+			fachadaDao.saveCliente(singelo);
 			
 			//criando terceiro cliente
 			Cliente gargamel = new Cliente(33333333333l, "Gargamel", "Gavea, Arauto, 62", "gargamel@email.com", 999999988);
 			clientes.add(gargamel);
-			clienteDao.save(gargamel);
+			fachadaDao.saveCliente(gargamel);
+			
+			System.out.println("\nPressione enter para continuar.");
+			leitor.nextLine();
 			
 			Set<LivroCadastrado> livrosCadastrados = new HashSet<LivroCadastrado>();
 			
@@ -94,7 +94,7 @@ public class Main {
 			Exemplar e3 = new Exemplar('c', hp1);
 			exemplaresHP1.add(e3);
 			hp1.addExemplares(exemplaresHP1);
-			livrocadastradoDao.save(hp1);
+			fachadaDao.saveLivro(hp1);
 			
 			//criando segundo livro
 			LivroCadastrado hp2 = new LivroCadastrado("Harry Potter 2", "J.K Rolling", "Fantasia", "Harry Editora");
@@ -107,14 +107,14 @@ public class Main {
 			e3 = new Exemplar('c', hp2);
 			exemplaresHP2.add(e3);
 			hp2.addExemplares(exemplaresHP2);
-			livrocadastradoDao.save(hp2);
+			fachadaDao.saveLivro(hp2);
 			
 			//criando primeiro livro
 			LivroCadastrado nemTeConto = new LivroCadastrado("Nem te conto", "Spielberg Harry", "Biografia", "Editora Spius");
 			livrosCadastrados.add(nemTeConto);
 			Exemplar eNemTeConto = new Exemplar('a', nemTeConto);
 			nemTeConto.addExemplar(eNemTeConto);
-			livrocadastradoDao.save(nemTeConto);
+			fachadaDao.saveLivro(nemTeConto);
 			
 			//criando primeiro livro
 			LivroCadastrado voltaProTerreo = new LivroCadastrado("Volta pro térreo", "Baltazar", "Drama", "Editazar");
@@ -125,7 +125,7 @@ public class Main {
 			e2 = new Exemplar('b', voltaProTerreo);
 			exemplaresVoltaProTerreo.add(e2);
 			voltaProTerreo.addExemplares(exemplaresVoltaProTerreo);
-			livrocadastradoDao.save(voltaProTerreo);
+			fachadaDao.saveLivro(voltaProTerreo);
 			
 			//criando primeiro livro sugerido
 			LivroSugerido livroSugerido1 = new LivroSugerido("Lixeiro","Cataclisma");
@@ -136,12 +136,12 @@ public class Main {
 			//criando bibliotecário
 			int id = Main.geraId();
 			Bibliotecário bibliotecario = new Bibliotecário("Cornelius", id, "12345");
-			funcionarioDao.save(bibliotecario);
+			fachadaDao.saveFuncionario(bibliotecario);
 			
 			//criando gerente
 			int idGerente = Main.geraId();
 			Gerente gerente = new Gerente("Papa Aquatico", idGerente, "11111");
-			funcionarioDao.save(gerente);
+			fachadaDao.saveFuncionario(gerente);
 			
 			System.out.println("Realizando login com senha/id inválido...");
 			if(!bibliotecario.logar(id, "12344") && !bibliotecario.logar(1, "12345")) {
@@ -160,7 +160,7 @@ public class Main {
 				System.out.println("Erro ao realizar login.");
 			}
 			
-			funcionarioDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -197,8 +197,7 @@ public class Main {
 				System.out.println("Erro ao realizar reserva.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -210,8 +209,7 @@ public class Main {
 				System.out.println("Reserva não foi realizada, como esperado.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -223,8 +221,7 @@ public class Main {
 				System.out.println("Erro ao cancelar reserva.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -237,8 +234,7 @@ public class Main {
 				System.out.println("Erro ao realizar reserva.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -250,8 +246,7 @@ public class Main {
 				System.out.println("Erro ao concluir reserva.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -264,8 +259,7 @@ public class Main {
 				System.out.println("Erro ao realizar reserva.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -277,8 +271,7 @@ public class Main {
 				System.out.println("Erro ao devolver livro.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -290,7 +283,7 @@ public class Main {
 				System.out.println("Reserva não foi realizada, como esperado.");
 			}
 			
-			livrocadastradoDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -303,8 +296,7 @@ public class Main {
 				System.out.println("Erro ao realizar aluguel.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -316,8 +308,7 @@ public class Main {
 				System.out.println("Erro ao cancelar aluguel.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -330,8 +321,7 @@ public class Main {
 				System.out.println("Erro ao realizar aluguel.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -343,7 +333,7 @@ public class Main {
 				System.out.println("Não foi permitido realizar cobrança, visto que cliente não está com aluguel atrasado.");
 			}
 			
-			livrocadastradoDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -356,8 +346,7 @@ public class Main {
 				System.out.println("Erro ao realizar cobrança.");
 			}
 			
-			livrocadastradoDao.update();
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -369,7 +358,7 @@ public class Main {
 				System.out.println("Erro ao realizar pelo menos uma das requisições.");
 			}
 			
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -383,7 +372,7 @@ public class Main {
 				System.out.println("Pelo menos uma das requisições pelo livro não foram atendidas.");
 			}
 			
-			clienteDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();
@@ -397,7 +386,7 @@ public class Main {
 				System.out.println("Funcionário ainda estão no sistema, incorretamente.");
 			}
 			
-			funcionarioDao.update();
+			fachadaDao.update();
 			
 			System.out.println("\nPressione enter para continuar.");
 			leitor.nextLine();

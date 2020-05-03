@@ -85,7 +85,7 @@ public class LivroCadastradoDao implements Dao<LivroCadastrado> {static int i = 
 	
 	private ArrayList<LivroCadastrado> livros;
 	
-	public LivroCadastradoDao() throws IOException {
+	LivroCadastradoDao() throws IOException {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(LivroCadastrado.class, new LivroCadastradoDeserializer());
 		Gson gson = gsonBuilder.create();
