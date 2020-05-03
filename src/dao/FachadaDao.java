@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import funcionario.Funcionário;
 import livro.Exemplar;
 import livro.LivroCadastrado;
 import relações.Aluguel;
@@ -14,11 +15,15 @@ import relações.Reserva;
 
 //TRANSFORMAR ESSA CLASSE EM SINGLETON
 public class FachadaDao {
+	private static FachadaDao instance = null;
+	
 	private ClienteDao clienteDao;
 	private LivroCadastradoDao livroDao;
+	private FuncionarioDao funcionarioDao;
 	
 	private ArrayList<Cliente> clientes;
 	private ArrayList<LivroCadastrado> livros;
+	private ArrayList<Funcionário> funcionarios;
 	
 	//acho que vou tirar esses sets pq da mt trabalho manter eles nos updates e saves
 	
@@ -26,21 +31,32 @@ public class FachadaDao {
 //	private ArrayList<Aluguel> alugueis;
 //	private ArrayList<Exemplar> exemplares;
 	
-	public FachadaDao() throws IOException {
+	static FachadaDao getInstance() throws IOException {
+		if(instance == null)
+			instance = new FachadaDao();
+		return instance;
+	}
+	
+	private FachadaDao() throws IOException {
 		//reservas = new ArrayList<Reserva>();
 		//alugueis = new ArrayList<Aluguel>();
 		//exemplares = new ArrayList<Exemplar>();
 		
 		clienteDao = new ClienteDao();
 		livroDao = new LivroCadastradoDao();
+		funcionarioDao = new FuncionarioDao();
 		
 		clientes = clienteDao.getAll();
 		livros = livroDao.getAll();
+		funcionarios = funcionarioDao.getAll();
 		if(clientes == null) {
 			clientes = new ArrayList<Cliente>();
 		}
 		if(livros == null) {
 			livros = new ArrayList<LivroCadastrado>();
+		}
+		if(funcionarios == null) {
+			funcionarios = new ArrayList<Funcionário>();
 		}
 		
 		//consertando as referencias
@@ -75,6 +91,10 @@ public class FachadaDao {
 	
 	public ArrayList<LivroCadastrado> getAllLivros() {
 		return livros;
+	}
+	
+	public ArrayList<Funcionário> getAllFuncionarios() {
+		return funcionarios;
 	}
 	
 	public Optional<Cliente> getCliente(long cpf) {
@@ -125,6 +145,13 @@ public class FachadaDao {
 //		});
 	}
 	
+	public void saveFuncionario(Funcionário t) {
+		if(!funcionarios.contains(t)) {
+			funcionarios.add(t);
+			funcionarioDao.save(t);
+		}
+	}
+	
 	public void update() {
 		clienteDao.update();
 		livroDao.update();
@@ -163,6 +190,13 @@ public class FachadaDao {
 //				alugueis.remove(exemplar.getAluguel());
 //			}
 //		});
+	}
+	
+	public void deleteFuncionario(Funcionário t) {
+		if(funcionarios.contains(t)) {
+			funcionarios.remove(t);
+			funcionarioDao.delete(t);
+		}
 	}
 	
 }
