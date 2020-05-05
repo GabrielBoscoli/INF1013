@@ -1,7 +1,6 @@
-package livro;
+package modelo;
 
 import dao.Hidden;
-import relações.Aluguel;
 
 public class Exemplar {
 	//atributo adicionado

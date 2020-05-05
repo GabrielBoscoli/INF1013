@@ -2,18 +2,13 @@ package dao;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
-import funcionario.Funcionário;
-import livro.Exemplar;
-import livro.LivroCadastrado;
-import relações.Aluguel;
-import relações.Cliente;
-import relações.Reserva;
+import modelo.Cliente;
+import modelo.Exemplar;
+import modelo.Funcionário;
+import modelo.LivroCadastrado;
 
-//TRANSFORMAR ESSA CLASSE EM SINGLETON
 public class FachadaDao {
 	private static FachadaDao instance = null;
 	
@@ -109,7 +104,7 @@ public class FachadaDao {
 		return livroDao.get(params);
 	}
 	
-	public void saveCliente(Cliente t) {System.out.println("oi");
+	public void saveCliente(Cliente t) {
 		if(!clientes.contains(t)) {
 			clienteDao.save(t);
 		}
@@ -152,6 +147,7 @@ public class FachadaDao {
 	public void update() {
 		clienteDao.update();
 		livroDao.update();
+		funcionarioDao.update();
 	}
 	
 	public void deleteCliente(Cliente t) {

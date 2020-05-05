@@ -25,10 +25,10 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
-import livro.Exemplar;
-import livro.LivroCadastrado;
-import relações.Cliente;
-import relações.Reserva;
+import modelo.Cliente;
+import modelo.Exemplar;
+import modelo.LivroCadastrado;
+import modelo.Reserva;
 
 /*
  * Ao deserializar o json, as instancias de LivroCadastrado criadas possuem Set de reservas vazio

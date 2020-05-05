@@ -1,10 +1,8 @@
-package relações;
+package modelo;
 
 import java.util.Calendar;
 
 import dao.Hidden;
-import livro.Exemplar;
-import livro.LivroCadastrado;
 
 public class Reserva {
 	private Calendar dataRealizacao;

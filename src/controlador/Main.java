@@ -1,4 +1,4 @@
-package main;
+package controlador;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,19 +7,15 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
-import dao.ClienteDao;
 import dao.FachadaDao;
-import dao.FuncionarioDao;
-import dao.LivroCadastradoDao;
-import funcionario.Bibliotecário;
-import funcionario.Funcionário;
-import funcionario.Gerente;
-import livro.Exemplar;
-import livro.LivroCadastrado;
-import livro.LivroSugerido;
-import relações.Aluguel;
-import relações.Cliente;
-import relações.Reserva;
+import modelo.Aluguel;
+import modelo.Bibliotecário;
+import modelo.Cliente;
+import modelo.Exemplar;
+import modelo.Gerente;
+import modelo.LivroCadastrado;
+import modelo.LivroSugerido;
+import modelo.Reserva;
 
 public class Main {
 	
@@ -94,9 +90,6 @@ public class Main {
 			Cliente gargamel = new Cliente(33333333333l, "Gargamel", "Gavea, Arauto, 62", "gargamel@email.com", 999999988);
 			clientes.add(gargamel);
 			fachadaDao.saveCliente(gargamel);
-			
-			System.out.println("\nPressione enter para continuar.");
-			leitor.nextLine();
 			
 			Set<LivroCadastrado> livrosCadastrados = new HashSet<LivroCadastrado>();
 			

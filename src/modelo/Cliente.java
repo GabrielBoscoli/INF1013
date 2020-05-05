@@ -1,13 +1,10 @@
-package relações;
+package modelo;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import dao.Hidden;
-import livro.Exemplar;
-import livro.LivroCadastrado;
-import livro.LivroSugerido;
 
 public class Cliente {
 	private long cpf;

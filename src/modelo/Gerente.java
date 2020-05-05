@@ -1,10 +1,7 @@
-package funcionario;
+package modelo;
 
 import java.util.Iterator;
 import java.util.Set;
-
-import livro.LivroSugerido;
-import relações.Cliente;
 
 public class Gerente extends Funcionário {
 	public Gerente(String nome, int id, String senha) {

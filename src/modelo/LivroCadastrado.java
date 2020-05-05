@@ -1,4 +1,4 @@
-package livro;
+package modelo;
 
 import java.util.Calendar;
 import java.util.HashSet;
@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import dao.Hidden;
-import relações.Reserva;
 
 public class LivroCadastrado extends Livro {
 	//atributos adicionados

@@ -1,9 +1,7 @@
-package funcionario;
+package modelo;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import livro.LivroCadastrado;
 
 public abstract class Funcionário {
 	private int id;

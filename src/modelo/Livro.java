@@ -1,4 +1,4 @@
-package livro;
+package modelo;
 
 public abstract class Livro {
 	protected String nome;

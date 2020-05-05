@@ -20,10 +20,9 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
-import funcionario.Bibliotecário;
-import funcionario.Funcionário;
-import funcionario.Gerente;
-import relações.Cliente;
+import modelo.Bibliotecário;
+import modelo.Funcionário;
+import modelo.Gerente;
 
 public class FuncionarioDao implements Dao<Funcionário> {
 	
@@ -32,9 +31,9 @@ public class FuncionarioDao implements Dao<Funcionário> {
 		public JsonElement serialize(Funcionário object, Type type, JsonSerializationContext context) {
 			JsonObject jsonObject = new JsonObject();
 			if(object instanceof Gerente) {
-				jsonObject.addProperty("tipo", "gerente");
+				jsonObject.addProperty("tipo", "Gerente");
 			} else {
-				jsonObject.addProperty("tipo", "bibliotecario");
+				jsonObject.addProperty("tipo", "Bibliotecario");
 			}
 			jsonObject.addProperty("nome", object.getNome());
 			jsonObject.addProperty("id", object.getId());
@@ -51,7 +50,7 @@ public class FuncionarioDao implements Dao<Funcionário> {
 			Funcionário funcionario = null;
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
 			String tipo = jsonObject.get("tipo").getAsString();
-			if(tipo.equals("gerente")) {
+			if(tipo.equals("Gerente")) {
 				funcionario = new Gerente(jsonObject.get("nome").getAsString(),
 						jsonObject.get("id").getAsInt(),
 						jsonObject.get("senha").getAsString());

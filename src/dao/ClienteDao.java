@@ -25,13 +25,12 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
-import livro.Exemplar;
-import livro.LivroCadastrado;
-import livro.LivroSugerido;
-import relações.Aluguel;
-
-import relações.Cliente;
-import relações.Reserva;
+import modelo.Aluguel;
+import modelo.Cliente;
+import modelo.Exemplar;
+import modelo.LivroCadastrado;
+import modelo.LivroSugerido;
+import modelo.Reserva;
 
 /*
  * Ao deserializar o json, as instancia de cliente possuem todos os atributos.
