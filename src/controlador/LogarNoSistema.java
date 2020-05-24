@@ -10,6 +10,7 @@ public class LogarNoSistema {
 		Scanner leitor = new Scanner(System.in);
 		
 		System.out.println("Digite id de login:");
+		System.out.println(leitor);
 		String idStr = leitor.next();
 		
 		System.out.println("Digite a senha:");
@@ -20,15 +21,18 @@ public class LogarNoSistema {
 		try {
 			id = Integer.parseInt(idStr);
 		} catch (NumberFormatException e) {
+			System.out.println("Id ou senha inválido. Tente novamente.");
 			return null;
 		}
 		
-		for(Funcionário i : funcionarios) {
-			if(i.logar(id, senha)) {
-				return i;
+		for(Funcionário funcionario : funcionarios) {
+			if(funcionario.logar(id, senha)) {
+				System.out.println("Bem vindo, " + funcionario.getNome() + ".");
+				return funcionario;
 			}
 		}
 		
+		System.out.println("Id ou senha inválido. Tente novamente.");
 		return null;
 	}
 }
