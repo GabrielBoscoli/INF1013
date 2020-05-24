@@ -12,8 +12,8 @@ import modelo.LivroCadastrado;
 import modelo.Reserva;
 
 public class ConcluirReserva {
-	public static boolean concluir(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static boolean concluir(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros,
+			Scanner leitor) throws IOException {
 		Reserva reserva = null;
 		boolean reservaConcluida = false;
 		
@@ -116,7 +116,6 @@ public class ConcluirReserva {
 			}
 		}
 
-		leitor.close();
 		return reservaConcluida;
 	}
 }

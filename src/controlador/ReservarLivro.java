@@ -11,8 +11,8 @@ import modelo.LivroCadastrado;
 import modelo.Reserva;
 
 public class ReservarLivro {
-	public static Reserva reservar(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static Reserva reservar(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros,
+			Scanner leitor) throws IOException {
 		Cliente clienteReserva = null;
 		boolean novoCliente = false;
 		Reserva reserva = null;
@@ -77,7 +77,7 @@ public class ReservarLivro {
 		}
 		
 		// buscar o livro que será reservado
-		LivroCadastrado livroReservado = BuscarLivro.buscar(funcionario, livros);
+		LivroCadastrado livroReservado = BuscarLivro.buscar(funcionario, livros, leitor);
 		
 		// confirmar reserva
 		System.out.println("Confirmar reserva? Digite 's' para confirmar e 'n' para cancelar.");
@@ -109,7 +109,6 @@ public class ReservarLivro {
 			}
 		}
 
-		leitor.close();
 		return reserva;
 	}
 }

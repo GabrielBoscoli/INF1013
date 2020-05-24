@@ -6,16 +6,13 @@ import java.util.Scanner;
 import modelo.Funcionário;
 
 public class LogarNoSistema {
-	public static Funcionário logar(ArrayList<Funcionário> funcionarios) {
-		Scanner leitor = new Scanner(System.in);
+	public static Funcionário logar(ArrayList<Funcionário> funcionarios, Scanner leitor) {
 		
 		System.out.println("Digite id de login:");
-		System.out.println(leitor);
 		String idStr = leitor.next();
 		
 		System.out.println("Digite a senha:");
 		String senha = leitor.next();
-		leitor.close();
 		
 		int id = -1;
 		try {

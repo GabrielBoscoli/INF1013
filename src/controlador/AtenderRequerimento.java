@@ -12,8 +12,7 @@ import modelo.Gerente;
 import modelo.LivroSugerido;
 
 public class AtenderRequerimento {
-	public static boolean atender(Gerente gerente, ArrayList<Cliente> clientes) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static boolean atender(Gerente gerente, ArrayList<Cliente> clientes, Scanner leitor) throws IOException {
 		boolean atendimentoBemSucedido = false;
 		
 		System.out.println("Digite o nome do livro atendido: ");
@@ -39,7 +38,6 @@ public class AtenderRequerimento {
 		// se o livro atendido nao foi sugerido
 		if(livroSugerido == null) {
 			System.out.println("Não há pedidos de aquisição para esse livro.");
-			leitor.close();
 			return false;
 		}
 		
@@ -68,7 +66,6 @@ public class AtenderRequerimento {
 			}
 		}
 
-		leitor.close();
 		return atendimentoBemSucedido;
 	}
 }

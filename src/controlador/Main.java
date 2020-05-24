@@ -42,7 +42,7 @@ public class Main {
 		boolean encerrarPrograma = false;
 		
 		while(!encerrarPrograma) {
-			Funcionário funcionario = LogarNoSistema.logar(arrayFuncionarios);
+			Funcionário funcionario = LogarNoSistema.logar(arrayFuncionarios, leitor);
 			while(funcionario != null && funcionario.estaLogado()) {
 				System.out.println("Para buscar livro: 0");
 				System.out.println("Para alugar livro: 1");
@@ -67,35 +67,35 @@ public class Main {
 				if(input >= 0 && input <= 9) {
 					switch (input) {
 						case 0:
-							BuscarLivro.buscar(funcionario, arrayLivros);
+							BuscarLivro.buscar(funcionario, arrayLivros, leitor);
 							break;
 						case 1:
-							AlugarLivro.alugar(funcionario, arrayClientes, arrayLivros);
+							AlugarLivro.alugar(funcionario, arrayClientes, arrayLivros, leitor);
 							break;
 						case 2:
-							DevolverLivro.devolver(funcionario, arrayClientes, arrayLivros);
+							DevolverLivro.devolver(funcionario, arrayClientes, arrayLivros, leitor);
 							break;
 						case 3:
-							CancelarAluguel.cancelar(funcionario, arrayClientes, arrayLivros);
+							CancelarAluguel.cancelar(funcionario, arrayClientes, arrayLivros, leitor);
 							break;
 						case 4:
-							CobrarAluguel.cobrar(funcionario, arrayClientes);
+							CobrarAluguel.cobrar(funcionario, arrayClientes, leitor);
 							break;
 						case 5:
-							ReservarLivro.reservar(funcionario, arrayClientes, arrayLivros);
+							ReservarLivro.reservar(funcionario, arrayClientes, arrayLivros, leitor);
 							break;
 						case 6:
-							ConcluirReserva.concluir(funcionario, arrayClientes, arrayLivros);
+							ConcluirReserva.concluir(funcionario, arrayClientes, arrayLivros, leitor);
 							break;
 						case 7:
-							CancelarReserva.cancelar(funcionario, arrayClientes, arrayLivros);
+							CancelarReserva.cancelar(funcionario, arrayClientes, arrayLivros, leitor);
 							break;
 						case 8:
-							RequisitarLivro.requisitar(funcionario, arrayClientes);
+							RequisitarLivro.requisitar(funcionario, arrayClientes, leitor);
 							break;
 						case 9:
 							if(funcionario instanceof Gerente) {
-								AtenderRequerimento.atender((Gerente) funcionario, arrayClientes);
+								AtenderRequerimento.atender((Gerente) funcionario, arrayClientes, leitor);
 							}
 							break;
 						case 10:

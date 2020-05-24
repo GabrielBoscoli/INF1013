@@ -12,8 +12,8 @@ import modelo.Funcionário;
 import modelo.LivroCadastrado;
 
 public class AlugarLivro {
-	public static Aluguel alugar(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static Aluguel alugar(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros,
+			Scanner leitor) throws IOException {
 		Cliente clienteAluguel = null;
 		boolean novoCliente = false;
 		Aluguel aluguel = null;
@@ -78,7 +78,7 @@ public class AlugarLivro {
 		}
 		
 		// buscar o livro que será alugado
-		LivroCadastrado livroAlugado = BuscarLivro.buscar(funcionario, livros);
+		LivroCadastrado livroAlugado = BuscarLivro.buscar(funcionario, livros, leitor);
 		
 		// inserir exemplar do livro que será alugado
 		System.out.println("Digite o id do exemplar alugado do livro " + livroAlugado.getNome() + ": ");
@@ -133,8 +133,7 @@ public class AlugarLivro {
 				System.out.println("Digite um valor válido.");
 			}
 		}
-
-		leitor.close();
+		
 		return aluguel;
 	}
 }

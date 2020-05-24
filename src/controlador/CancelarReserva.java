@@ -11,8 +11,8 @@ import modelo.LivroCadastrado;
 import modelo.Reserva;
 
 public class CancelarReserva {
-	public static boolean cancelar(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static boolean cancelar(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros,
+			Scanner leitor) throws IOException {
 		Reserva reserva = null;
 		boolean reservaCancelada = false;
 		
@@ -90,7 +90,6 @@ public class CancelarReserva {
 			}
 		}
 
-		leitor.close();
 		return reservaCancelada;
 	}
 }

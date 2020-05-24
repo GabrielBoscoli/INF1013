@@ -9,9 +9,7 @@ import modelo.Funcionário;
 import modelo.LivroCadastrado;
 
 public class BuscarLivro {
-	public static LivroCadastrado buscar(Funcionário funcionario, ArrayList<LivroCadastrado> livros) {
-		Scanner leitor = new Scanner(System.in);
-		
+	public static LivroCadastrado buscar(Funcionário funcionario, ArrayList<LivroCadastrado> livros, Scanner leitor) {
 		System.out.println("Digite o nome ou autor do livro:");
 		String nomeOuAutor = leitor.next();
 		
@@ -30,7 +28,6 @@ public class BuscarLivro {
 		}
 		
 		if(arrayLivrosRetornados.isEmpty()) {
-			leitor.close();
 			return null;
 		}
 		
@@ -49,7 +46,6 @@ public class BuscarLivro {
 			}			
 		}
 		
-		leitor.close();
 		return arrayLivrosRetornados.get(livroIndex);
 	}
 }

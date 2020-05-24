@@ -11,8 +11,8 @@ import modelo.Funcionário;
 import modelo.LivroCadastrado;
 
 public class DevolverLivro {
-	public static boolean devolver(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static boolean devolver(Funcionário funcionario, ArrayList<Cliente> clientes, ArrayList<LivroCadastrado> livros,
+			Scanner leitor) throws IOException {
 		Aluguel aluguel = null;
 		boolean devolucaoBemSucedida = false;
 		
@@ -90,7 +90,6 @@ public class DevolverLivro {
 			}
 		}
 
-		leitor.close();
 		return devolucaoBemSucedida;
 	}
 }

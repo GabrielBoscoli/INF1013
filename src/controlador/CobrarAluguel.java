@@ -10,8 +10,7 @@ import modelo.Cliente;
 import modelo.Funcionário;
 
 public class CobrarAluguel {
-	public static boolean cobrar(Funcionário funcionario, ArrayList<Cliente> clientes) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static boolean cobrar(Funcionário funcionario, ArrayList<Cliente> clientes, Scanner leitor) throws IOException {
 		boolean cobrançaBemSucedida = false;
 		Aluguel aluguelCobrado;
 		ArrayList<Aluguel> alugueisAtrasados = new ArrayList<Aluguel>();
@@ -91,7 +90,6 @@ public class CobrarAluguel {
 			}
 		}
 
-		leitor.close();
 		return cobrançaBemSucedida;
 	}
 }

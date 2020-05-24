@@ -10,8 +10,7 @@ import modelo.Funcionário;
 import modelo.LivroSugerido;
 
 public class RequisitarLivro {
-	public static boolean requisitar(Funcionário funcionario, ArrayList<Cliente> clientes) throws IOException {
-		Scanner leitor = new Scanner(System.in);
+	public static boolean requisitar(Funcionário funcionario, ArrayList<Cliente> clientes, Scanner leitor) throws IOException {
 		Cliente clienteReserva = null;
 		boolean novoCliente = false;
 		boolean requerimentoBemSucedido = false;
@@ -130,7 +129,6 @@ public class RequisitarLivro {
 			}
 		}
 
-		leitor.close();
 		return requerimentoBemSucedido;
 	}
 }
