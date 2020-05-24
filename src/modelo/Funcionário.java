@@ -32,6 +32,7 @@ public abstract class Funcionário {
 		return autenticado;
 	}
 	
+	// Mudar esse método para classe livro?
 	public Set<LivroCadastrado> buscarLivro(Set<LivroCadastrado> livros, String nomeOuAutor) {
 		if(!autenticado) {
 			return null;

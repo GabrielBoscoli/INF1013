@@ -158,4 +158,12 @@ public class Cliente {
 //		System.out.println("reservado: " + livro.getQuantidadeReserva());
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
 }

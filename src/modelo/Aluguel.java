@@ -77,6 +77,16 @@ public class Aluguel {
 		return false;
 	}
 	
+	public boolean isAtrasado() {
+		Calendar hoje = Calendar.getInstance();
+		if(cancelado == true ||
+				hoje.before(dataDevolucaoPrevista) ||
+				(dataDevolucao != null && dataDevolucao.before(dataDevolucaoPrevista))) {
+			return false; //ou ainda n chegou o dia previsto para devolver ou a devolucao ja foi feita ou cliente ja foi cobrado
+		}
+		return true;
+	}
+	
 	private boolean devolverOuCancelarAux() {
 		LivroCadastrado livro = livroAlugado.getLivro();
 		int disponivel = livro.getQuantidadeDisponivel();
@@ -111,11 +121,9 @@ public class Aluguel {
 	 * true, se aluguel foi cobrado corretamente.
 	 */
 	public boolean cobrarAluguelAtrasado(int modo) {
-		Calendar hoje = Calendar.getInstance();
 		//se nao estiver atrasado, não permitir cobrança
-		if(hoje.before(dataDevolucaoPrevista) || (dataDevolucao != null && dataDevolucao.before(dataDevolucaoPrevista))
-				|| cobrado == true) {
-			return false; //ou ainda n chegou o dia previsto para devolver ou a devolucao ja foi feita ou cliente ja foi cobrado
+		if(!this.isAtrasado() || cobrado == true) {
+			return false;
 		}
 		if(modo == 1) {
 			return cobrarPorEmail(cliente.getEmail());			
