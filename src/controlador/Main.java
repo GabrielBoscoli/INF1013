@@ -53,8 +53,10 @@ public class Main {
 				System.out.println("Para concluir reserva: 6");
 				System.out.println("Para cancelar reserva: 7");
 				System.out.println("Para requisitar livro: 8");
+				System.out.println("Para deslogar: 9");
 				if(funcionario instanceof Gerente) {
-					System.out.println("Para atender requerimento: 9");
+					System.out.println("Para atender requerimento: 10");
+					System.out.println("Para cadastrar livro: 11");
 				}
 				
 				inputString = leitor.nextLine().toLowerCase();
@@ -64,7 +66,7 @@ public class Main {
 					System.out.println("Digite um valor válido.");
 				}
 				
-				if(input >= 0 && input <= 9) {
+				if(input >= 0 && input <= 11) {
 					switch (input) {
 						case 0:
 							BuscarLivro.buscar(funcionario, arrayLivros, leitor);
@@ -94,11 +96,17 @@ public class Main {
 							RequisitarLivro.requisitar(funcionario, arrayClientes, leitor);
 							break;
 						case 9:
+							DeslogarDoSistema.deslogar(funcionario, leitor);
+							break;
+						case 10:
 							if(funcionario instanceof Gerente) {
 								AtenderRequerimento.atender((Gerente) funcionario, arrayClientes, leitor);
 							}
 							break;
-						case 10:
+						case 11:
+							if(funcionario instanceof Gerente) {
+								CadastrarLivro.cadastrar(leitor);
+							}
 							break;
 					}
 				}
