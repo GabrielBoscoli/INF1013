@@ -9,10 +9,10 @@ public class LogarNoSistema {
 	public static Funcionário logar(ArrayList<Funcionário> funcionarios, Scanner leitor) {
 		
 		System.out.println("Digite id de login:");
-		String idStr = leitor.next();
+		String idStr = leitor.nextLine().toLowerCase();
 		
 		System.out.println("Digite a senha:");
-		String senha = leitor.next();
+		String senha = leitor.nextLine().toLowerCase();
 		
 		int id = -1;
 		try {

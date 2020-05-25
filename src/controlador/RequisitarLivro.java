@@ -22,7 +22,7 @@ public class RequisitarLivro {
 		boolean inputValido = false;
 		
 		while(!inputValido) {
-			cpfStr = leitor.next();
+			cpfStr = leitor.nextLine().toLowerCase();
 			try {
 				cpf = Long.parseLong(cpfStr);
 				inputValido = true;
@@ -47,18 +47,19 @@ public class RequisitarLivro {
 		if(clienteReserva == null) {
 			novoCliente = true;
 			System.out.println("Digite o nome do cliente: ");
-			nome = leitor.next();
+			nome = leitor.nextLine().toLowerCase();
 			System.out.println("Digite o email do cliente: ");
-			email = leitor.next();
+			email = leitor.nextLine().toLowerCase();
 			System.out.println("Digite o endereco do cliente: ");
-			endereco = leitor.next();
+			endereco = leitor.nextLine().toLowerCase();
 			
 			System.out.println("Digite o telefone do cliente: ");
 			String telefoneStr;
 			telefone = 0;
 			inputValido = false;
 			while(!inputValido) {
-				telefoneStr = leitor.next();
+				telefoneStr = leitor.nextLine().toLowerCase();
+				inputValido = true;
 				try {
 					telefone = Integer.parseInt(telefoneStr);					
 				} catch(NumberFormatException e) {
@@ -75,9 +76,9 @@ public class RequisitarLivro {
 		}
 		
 		System.out.println("Digite o nome do livro requisitado: ");
-		String nomeLivro = leitor.next();
+		String nomeLivro = leitor.nextLine().toLowerCase();
 		System.out.println("Digite o autor do livro atendido: ");
-		String autorLivro = leitor.next();
+		String autorLivro = leitor.nextLine().toLowerCase();
 		LivroSugerido livroSugerido = null;
 		
 		// verifica se livro ja foi sugerido
@@ -105,7 +106,7 @@ public class RequisitarLivro {
 		inputValido = false;
 		
 		while(!inputValido) {
-			confirmar = leitor.next();
+			confirmar = leitor.nextLine().toLowerCase();
 			try {
 				if(confirmar.equals("s")) {
 					if(clienteReserva.requisitarLivro(livroSugerido)) {

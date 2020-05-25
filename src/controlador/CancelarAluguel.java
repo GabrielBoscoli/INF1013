@@ -18,7 +18,7 @@ public class CancelarAluguel {
 		
 		//buscar reserva ativa por nome do livro ou cpf do cliente
 		System.out.println("Digite o nome do livro alugado ou o cpf do cliente que alugou");
-		String nomeOuCpf = leitor.next();
+		String nomeOuCpf = leitor.nextLine().toLowerCase();
 		String nome = null;
 		int cpf = -1;
 		try {
@@ -40,6 +40,11 @@ public class CancelarAluguel {
 			});
 		}
 		
+		if(alugueis.isEmpty()) {
+			System.out.println("Busca não retornou resultados.");
+			return false;
+		}
+		
 		System.out.println("Selecione o aluguel desejado.");
 		
 		int i = 0;
@@ -53,7 +58,7 @@ public class CancelarAluguel {
 		boolean inputValido = false;
 		
 		while(!inputValido) {
-			indexStr = leitor.next();
+			indexStr = leitor.nextLine().toLowerCase();
 			try {
 				index = Integer.parseInt(indexStr);
 				inputValido = true;
@@ -70,7 +75,7 @@ public class CancelarAluguel {
 		inputValido = false;
 		
 		while(!inputValido) {
-			confirmar = leitor.next();
+			confirmar = leitor.nextLine().toLowerCase();
 			try {
 				if(confirmar.equals("s")) {
 					if(aluguel.cancelarAluguel()) {

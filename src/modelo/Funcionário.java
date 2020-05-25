@@ -18,7 +18,7 @@ public abstract class Funcionário {
 	}
 	
 	public boolean logar(int id, String senha) {
-		if(senha == this.senha && id == this.id) {
+		if(this.senha.equals(senha) && id == this.id) {
 			autenticado = true;
 		}
 		return autenticado;

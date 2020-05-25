@@ -173,5 +173,9 @@ public class Aluguel {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Aluguel [livroAlugado=" + livroAlugado + ", cliente=" + cliente + "]";
+	}
 }

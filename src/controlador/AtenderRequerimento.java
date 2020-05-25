@@ -16,9 +16,9 @@ public class AtenderRequerimento {
 		boolean atendimentoBemSucedido = false;
 		
 		System.out.println("Digite o nome do livro atendido: ");
-		String nomeLivro = leitor.next();
+		String nomeLivro = leitor.nextLine().toLowerCase();
 		System.out.println("Digite o autor do livro atendido: ");
-		String autorLivro = leitor.next();
+		String autorLivro = leitor.nextLine().toLowerCase();
 		LivroSugerido livroSugerido = null;
 		
 		// verifica se livro ja foi sugerido
@@ -47,7 +47,7 @@ public class AtenderRequerimento {
 		boolean inputValido = false;
 		
 		while(!inputValido) {
-			confirmar = leitor.next();
+			confirmar = leitor.nextLine().toLowerCase();
 			try {
 				if(confirmar.equals("s")) {
 					Set<Cliente> setClientes = new HashSet<Cliente>(clientes);

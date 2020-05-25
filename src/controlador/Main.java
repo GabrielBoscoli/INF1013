@@ -57,7 +57,7 @@ public class Main {
 					System.out.println("Para atender requerimento: 9");
 				}
 				
-				inputString = leitor.next();
+				inputString = leitor.nextLine().toLowerCase();
 				try {
 					input = Integer.parseInt(inputString);
 				} catch (NumberFormatException e) {
@@ -122,7 +122,7 @@ public class Main {
 //			
 //			fachadaDao.update();
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //
 //			System.out.println("cancela todos os alugueis do magui");
 //			magui.getAluguel().forEach(aluguel -> {
@@ -135,7 +135,7 @@ public class Main {
 //			
 //			fachadaDao.update();
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("magui aluga Harry Potter 1");
 //			LivroCadastrado livro = fachadaDao.getLivro("Harry Potter 1").get();
@@ -143,7 +143,7 @@ public class Main {
 //			
 //			fachadaDao.update();
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //		} else {
 //			//criando primeiro cliente
@@ -231,7 +231,7 @@ public class Main {
 //			}
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Realizando login...");
 //			if(bibliotecario.logar(id, "12345")) {
@@ -243,7 +243,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Bibliotecário buscando por livros que combinam com 'Harry'...");
 //			Set<LivroCadastrado> retornoBusca = bibliotecario.buscarLivro(livrosCadastrados, "Harry");
@@ -255,7 +255,7 @@ public class Main {
 //			}
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Bibliotecário buscando por livros que combinam com 'Spius'...");
 //			retornoBusca = bibliotecario.buscarLivro(livrosCadastrados, "Spius");
@@ -267,7 +267,7 @@ public class Main {
 //			}
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Magui reserva livro intitulado 'Nem te Conto'...");
 //			Reserva reservaMagui = magui.reservarLivro(nemTeConto);
@@ -280,7 +280,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Singelo reserva livro cujo unico exemplar já está reservado...");
 //			if(singelo.reservarLivro(nemTeConto) != null) {
@@ -292,7 +292,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Magui cancela sua reserva...");
 //			if(reservaMagui.cancelarReserva()) {
@@ -304,7 +304,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Singelo reserva livro intitulado 'Nem te Conto'...");
 //			Reserva reservaSingelo = singelo.reservarLivro(nemTeConto);
@@ -317,7 +317,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Singelo conclui sua reserva...");
 //			if(reservaSingelo.concluirReserva(eNemTeConto)) {
@@ -329,7 +329,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Gargamel reserva livro cujo unico exemplar está alugado...");
 //			Reserva reservaGargamel = gargamel.reservarLivro(nemTeConto);
@@ -342,7 +342,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Singelo devolve livro alugado...");
 //			if(eNemTeConto.getAluguel().devolverLivro()) {
@@ -354,7 +354,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Magui reserva livro cujo unico exemplar já está reservado...");
 //			if(magui.reservarLivro(nemTeConto) != null) {
@@ -366,7 +366,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Magui aluga livro intitulado 'Volta Pro Terreo'...");
 //			Aluguel aluguelMagui = magui.alugarLivro(e1);
@@ -379,7 +379,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Magui cancela aluguel...");
 //			if(aluguelMagui.cancelarAluguel()) {
@@ -391,7 +391,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Magui aluga livro intitulado 'Harry Potter 2'...");
 //			aluguelMagui = magui.alugarLivro(eHP2);
@@ -404,7 +404,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Aluguel de magui é cobrado...");
 //			if(aluguelMagui.cobrarAluguelAtrasado(1)) {
@@ -416,7 +416,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Aluguel de magui é cobrado depois da data prevista de devolução...");
 //			aluguelMagui.mudarDatas();
@@ -429,7 +429,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Clientes requisitam aquisição de livros...");
 //			if(singelo.requisitarLivro(livroSugerido1) && singelo.requisitarLivro(livroSugerido2) && magui.requisitarLivro(livroSugerido1)) {
@@ -441,7 +441,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Gerente atende requerimentos...");
 //			gerente.logar(idGerente, "11111");
@@ -455,7 +455,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			System.out.println("Funcionário deslogam do sistema...");
 //			gerente.deslogar();
@@ -469,7 +469,7 @@ public class Main {
 //			fachadaDao.update();
 //			
 //			System.out.println("\nPressione enter para continuar.");
-//			leitor.nextLine();
+//			leitor.nextLine().toLowerCase();
 //			
 //			//clienteDao.delete(magui);
 //			//clienteDao.delete(singelo);

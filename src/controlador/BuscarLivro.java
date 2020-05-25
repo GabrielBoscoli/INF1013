@@ -11,7 +11,7 @@ import modelo.LivroCadastrado;
 public class BuscarLivro {
 	public static LivroCadastrado buscar(Funcionário funcionario, ArrayList<LivroCadastrado> livros, Scanner leitor) {
 		System.out.println("Digite o nome ou autor do livro:");
-		String nomeOuAutor = leitor.next();
+		String nomeOuAutor = leitor.nextLine().toLowerCase();
 		
 		Set<LivroCadastrado> setLivros = new HashSet<LivroCadastrado>(livros);
 		setLivros = funcionario.buscarLivro(setLivros, nomeOuAutor);
@@ -37,7 +37,7 @@ public class BuscarLivro {
 		boolean valido = false;
 		
 		while(!valido) {
-			livroIndexStr = leitor.next();
+			livroIndexStr = leitor.nextLine().toLowerCase();
 			try {
 				livroIndex = Integer.parseInt(livroIndexStr);
 				valido = true;

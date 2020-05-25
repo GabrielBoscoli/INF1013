@@ -146,5 +146,10 @@ public class Reserva {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	@Override
+	public String toString() {
+		return "Reserva [livroReservado=" + livroReservado + ", cliente=" + cliente + "]";
+	}
 
+	
 }

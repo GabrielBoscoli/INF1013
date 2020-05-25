@@ -166,4 +166,8 @@ public class Cliente {
 		return endereco;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [cpf=" + cpf + ", nome=" + nome + "]";
+	}
 }

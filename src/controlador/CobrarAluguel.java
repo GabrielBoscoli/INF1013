@@ -24,6 +24,11 @@ public class CobrarAluguel {
 			});
 		}
 		
+		if(alugueisAtrasados.isEmpty()) {
+			System.out.println("Busca não retornou resultados.");
+			return false;
+		}
+		
 		System.out.println("Selecione o aluguel desejado.");
 		
 		int i = 0;
@@ -37,7 +42,7 @@ public class CobrarAluguel {
 		boolean inputValido = false;
 		
 		while(!inputValido) {
-			indexStr = leitor.next();
+			indexStr = leitor.nextLine().toLowerCase();
 			try {
 				index = Integer.parseInt(indexStr);
 				inputValido = true;
@@ -54,7 +59,7 @@ public class CobrarAluguel {
 		inputValido = false;
 		
 		while(!inputValido) {
-			modoStr = leitor.next();
+			modoStr = leitor.nextLine().toLowerCase();
 			try {
 				if(modoStr.equals("0") || modoStr.equals("1")) {
 					modo = Integer.parseInt(modoStr);
@@ -73,7 +78,7 @@ public class CobrarAluguel {
 		inputValido = false;
 		
 		while(!inputValido) {
-			confirmar = leitor.next();
+			confirmar = leitor.nextLine().toLowerCase();
 			try {
 				if(confirmar.equals("s")) {
 					aluguelCobrado.cobrarAluguelAtrasado(modo);

@@ -63,4 +63,11 @@ public abstract class Livro {
 	public void setEditora(String editora) {
 		this.editora = editora;
 	}
+
+	@Override
+	public String toString() {
+		return "Livro [nome=" + nome + ", autor=" + autor + "]";
+	}
+	
+	
 }
