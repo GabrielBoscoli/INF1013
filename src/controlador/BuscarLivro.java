@@ -23,11 +23,12 @@ public class BuscarLivro {
 		
 		int i = 0;
 		for(LivroCadastrado livro : arrayLivrosRetornados) {
-			System.out.println(i + ": " + livro.getNome());
+			System.out.println(i + ": " + livro.getNome() + ", de " + livro.getAutor());
 			i++;
 		}
 		
 		if(arrayLivrosRetornados.isEmpty()) {
+			System.out.println("Busca não retornou resultados.");
 			return null;
 		}
 		
@@ -46,6 +47,9 @@ public class BuscarLivro {
 			}			
 		}
 		
-		return arrayLivrosRetornados.get(livroIndex);
+		
+		LivroCadastrado livro = arrayLivrosRetornados.get(livroIndex);
+		livro.exibirDetalhes();
+		return livro;
 	}
 }

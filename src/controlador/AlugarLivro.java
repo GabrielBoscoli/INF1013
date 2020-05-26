@@ -63,7 +63,8 @@ public class AlugarLivro {
 			while(!inputValido) {
 				telefoneStr = leitor.nextLine().toLowerCase();
 				try {
-					telefone = Integer.parseInt(telefoneStr);					
+					telefone = Integer.parseInt(telefoneStr);		
+					inputValido = true;
 				} catch(NumberFormatException e) {
 					System.out.println("Digite um telefone válido.");
 				}

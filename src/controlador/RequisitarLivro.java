@@ -83,7 +83,7 @@ public class RequisitarLivro {
 		
 		// verifica se livro ja foi sugerido
 		for(Cliente cliente : clientes) {
-			LivroSugerido[] livros = (LivroSugerido[]) cliente.getLivrosSugeridos().toArray();
+			ArrayList<LivroSugerido> livros = new ArrayList<LivroSugerido>(cliente.getLivrosSugeridos());
 			for(LivroSugerido livro : livros) {
 				if(livro.getNome().equals(nomeLivro) && livro.getAutor().equals(autorLivro)) {
 					livroSugerido = livro;
@@ -112,9 +112,8 @@ public class RequisitarLivro {
 					if(clienteReserva.requisitarLivro(livroSugerido)) {
 						if(novoCliente) { // se cliente for novo, salvar ele no banco
 							FachadaDao.getInstance().saveCliente(clienteReserva);
-						} else { // se cliente já foi cadastrado, apenas atualizar suas infos
-							FachadaDao.getInstance().update();
 						}
+						FachadaDao.getInstance().update();
 						requerimentoBemSucedido = true;
 					} else {
 						System.out.println("Não foi possível realizar requerimento.");

@@ -61,7 +61,7 @@ public class FachadaDao {
 			clientes.get(j).getReservas().forEach(reserva -> {
 				//precisa construir um equals na classe livro. um livro seria igual ao outro se possuirem mesmo nome, autor e editora.
 				//tem que verificar se o objeto da copia é de fato o objeto do arraylist livros.
-				LivroCadastrado livro = copyLivros.remove(copyLivros.indexOf(reserva.getLivroReservado()));
+				LivroCadastrado livro = copyLivros.get(copyLivros.indexOf(reserva.getLivroReservado()));
 				reserva.setLivroReservado(livro);
 				livro.reservar(reserva);// isso funcionará quando o livroCadastradoDao retornar livros com reservas vazias.
 				//reservas.add(reserva);
@@ -69,7 +69,7 @@ public class FachadaDao {
 			ArrayList<LivroCadastrado> anotherCopyLivros = new ArrayList<>(livros);
 			clientes.get(j).getAluguel().forEach(aluguel -> {
 				Exemplar exemplar = aluguel.getLivroAlugado();
-				LivroCadastrado livro = anotherCopyLivros.remove(anotherCopyLivros.indexOf(exemplar.getLivro()));//precisa fazer equals no exemplar!!!
+				LivroCadastrado livro = anotherCopyLivros.get(anotherCopyLivros.indexOf(exemplar.getLivro()));//precisa fazer equals no exemplar!!!
 				if(aluguel.aluguelAtivo()) {
 					livro.getExemplar(exemplar.getId()).exemplarAlugado(aluguel);//examplar do livro agora possui aluguel
 				}

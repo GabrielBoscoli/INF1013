@@ -109,6 +109,8 @@ public class Main {
 							}
 							break;
 					}
+				} else {
+					System.out.println("Digite um valor válido.");
 				}
 			}
 		}
